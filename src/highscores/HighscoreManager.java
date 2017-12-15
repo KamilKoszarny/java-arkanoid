@@ -11,23 +11,22 @@ public class HighscoreManager {
     private static final String HIGHSCORE_FILE = "D:\\Informatyka\\Projekty\\ArkanoidJava\\Arkanoid2\\scores.dat";
 
     //Initialising an in and outputStream for working with the file
-    ObjectOutputStream outputStream = null;
-    ObjectInputStream inputStream = null;
+    private ObjectOutputStream outputStream = null;
 
     public HighscoreManager() {
         //initialising the scores-arraylist
         scores = new ArrayList<Score>();
     }
 
-    public ArrayList<Score> getScores() {
+    private ArrayList<Score> getScores() {
         loadScoreFile();
         sort();
         return scores;
     }
 
-    public void loadScoreFile() {
+    private void loadScoreFile() {
         try {
-            inputStream = new ObjectInputStream(new FileInputStream(HIGHSCORE_FILE));
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(HIGHSCORE_FILE));
             scores = (ArrayList<Score>) inputStream.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("[Laad] FNF Error: " + e.getMessage());
@@ -53,7 +52,7 @@ public class HighscoreManager {
         updateScoreFile();
     }
 
-    public void updateScoreFile() {
+    private void updateScoreFile() {
         try {
             outputStream = new ObjectOutputStream(new FileOutputStream(HIGHSCORE_FILE));
             outputStream.writeObject(scores);
@@ -74,7 +73,7 @@ public class HighscoreManager {
     }
 
     public String getHighscoreString() {
-        String highscoreString = "";
+        StringBuilder highscoreString = new StringBuilder();
         int max = 1;
 
         ArrayList<Score> scores;
@@ -86,16 +85,16 @@ public class HighscoreManager {
             x = max;
         }
         while (i < x) {
-            highscoreString += scores.get(i).getNaam() + "   " + scores.get(i).getScore();
+            highscoreString.append(scores.get(i).getNaam()).append("   ").append(scores.get(i).getScore());
             i++;
         }
-        return highscoreString;
+        return highscoreString.toString();
     }
 
 ////////////////////////////////////////////////////////////////////////
     private void sort() {
         ScoreComparator comparator = new ScoreComparator();
-        Collections.sort(scores, comparator);
+        scores.sort(comparator);
     }
 
 

@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Ball {
+class Ball {
     private double diameter = 24;
 
     private double x = 384;
@@ -10,15 +10,14 @@ public class Ball {
 
     private Game game;
     private Racquet racquet;
-    private Block block;
+//    private Block block;
     private int number;
-    private double angle;
     private int thru = 0;
     private int weak = 0;
     private int creator = 0;
     private int explosive = 0;
 
-    public Ball(Game game, Racquet racquet, double speed, int number) {
+    Ball(Game game, Racquet racquet, double speed, int number) {
         this.game = game;
         this.racquet = racquet;
         xa = speed/2;
@@ -26,8 +25,8 @@ public class Ball {
         this.number = number;
     }
 
-    public void move() {
-        boolean changeDirection = true;
+    void move() {
+//        boolean changeDirection = true;
 
         //frame collisions
         if (x + xa < 0)
@@ -42,7 +41,7 @@ public class Ball {
         //racquet collisions
         else if (racquetCollision()){
             y = game.racquet.getTopY() - diameter;
-            angle = ballAngle() + racquetAngle();
+            double angle = ballAngle() + racquetAngle();
             if (angle > 70)
                 angle = 70;
             if (angle < -70)
@@ -89,8 +88,8 @@ public class Ball {
                         game.block.destroy(i + game.block.getBlocksInRow());
                 }
             }
-            else
-                 changeDirection = false;
+//            else
+//                 changeDirection = false;
 
         x += xa;
         y += ya;
@@ -114,16 +113,14 @@ public class Ball {
     }
 
     private boolean blockCollision(int i) {
-        if (game.block.getBounds(i).intersects(getBounds()))
-            return game.block.getBounds(i).intersects(getBounds());
-        else return false;
+        return game.block.getBounds(i).intersects(getBounds());
     }
 
-    public void paint(Graphics2D g) {
+    void paint(Graphics2D g) {
         g.fillOval((int)x, (int)y, (int)diameter, (int)diameter);
     }
 
-    public Rectangle getBounds() {
+    private Rectangle getBounds() {
         return new Rectangle((int)x, (int)y, (int)diameter, (int)diameter);
     }
 
@@ -137,60 +134,60 @@ public class Ball {
     }
 
     ///get/set////////////////////////////////////////////////////////////////////////
-    public double getDiameter() {
+    double getDiameter() {
         return diameter;
     }
 
-    public void setDiameter(double diameter) {
+    void setDiameter(double diameter) {
         this.diameter = diameter;
     }
 
-    public double getX() {
+    double getX() {
         return x;
     }
 
-    public double getY() {
+    double getY() {
         return y;
     }
 
-    public void setX(double x) {
+    void setX(double x) {
         this.x = x;
     }
 
-    public void setY(double y) {
+    void setY(double y) {
         this.y = y;
     }
 
-    public void setXa(double xa) {
+    void setXa(double xa) {
         this.xa = xa;
     }
 
-    public void setYa(double ya) {
+    void setYa(double ya) {
         this.ya = ya;
     }
 
-    public void changeThru(boolean thruAdd) {
+    void changeThru(boolean thruAdd) {
         if (thruAdd)
             thru++;
         else
             thru--;
     }
 
-    public void changeWeak(boolean weakAdd) {
+    void changeWeak(boolean weakAdd) {
         if (weakAdd)
             weak++;
         else
             weak--;
     }
 
-    public void changeCreator(boolean creatorAdd) {
+    void changeCreator(boolean creatorAdd) {
         if (creatorAdd)
             creator++;
         else
             creator--;
     }
 
-    public void changeExplosive(boolean explosiveAdd) {
+    void changeExplosive(boolean explosiveAdd) {
         if (explosiveAdd)
             explosive++;
         else

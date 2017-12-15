@@ -1,63 +1,64 @@
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.Objects;
 
-public class Racquet {
-    public static final int Y = 500;
-    public static final int HEIGHT = 20;
+class Racquet {
+    static final int Y = 500;
+    static final int HEIGHT = 20;
     private double width = 120;
     private double x = 340;
     private double xa = 0;
     private Game game;
 
-    public Racquet(Game game) {
+    Racquet(Game game) {
         this.game = game;
     }
 
-    public void move() {
+    void move() {
         if (x + xa > 0 && x + xa < game.getWidth() - width)
             x += xa;
     }
 
-    public void directionSet(String direction){
-        if (direction == "left")
+    void directionSet(String direction){
+        if (Objects.equals(direction, "left"))
             xa = -game.speed - 3;
-        if (direction == "right")
+        if (Objects.equals(direction, "right"))
             xa = game.speed + 3;
-        if (direction == "stop")
+        if (Objects.equals(direction, "stop"))
             xa = 0;
     }
 
-    public void paint(Graphics2D g) {
+    void paint(Graphics2D g) {
         g.fillRect((int)x, Y, (int)width, HEIGHT);
     }
 
 
 ////get/set////////////////////////////////////////////////////////////////////////////////////////////
-    public Rectangle getBounds() {
+    Rectangle getBounds() {
         return new Rectangle((int)x, Y, (int)width, HEIGHT);
     }
 
-    public int getTopY() {
+    int getTopY() {
         return Y - HEIGHT;
     }
 
-    public static int getY() {
+    static int getY() {
         return Y;
     }
 
-    public double getX() {
+    double getX() {
         return x;
     }
 
-    public void setX(double x) {
+    void setX(double x) {
         this.x = x;
     }
 
-    public double getWidth() {
+    double getWidth() {
         return width;
     }
 
-    public void setWidth(double width) {
+    void setWidth(double width) {
         this.width = width;
     }
 }

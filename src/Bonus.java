@@ -25,7 +25,7 @@ private boolean exists, caught;
 
 private Game game;
 
-    public Bonus(Game game) {
+    Bonus(Game game) {
         this.game = game;
 
         exists = true;
@@ -34,7 +34,7 @@ private Game game;
         bonusType = r.nextInt(11) + 1;
     }
 
-    public void paint(Graphics2D g, int x, int y, int width, int height) {
+    void paint(Graphics2D g, int x, int y, int width, int height) {
         this.diameter = height*3/4;
         this.x = x + width/2 - diameter/2;
         this.y = y + height/2 - diameter/2 + fallenDistance;
@@ -145,7 +145,7 @@ private Game game;
         g.setColor(tmpColor);
     }
 
-    public void move(){
+    void move(){
         this.fallenDistance += game.speed;
         double tmpDiameter = game.ball.getDiameter();
         //start
@@ -281,17 +281,9 @@ private Game game;
                     (int)(game.ball2.getDiameter() * (1 - duration/DURATION)));
     }
 
-//get/set/////////////////////////////
-    public Rectangle getBounds() {
+
+    private Rectangle getBounds() {
         return new Rectangle(x, y, diameter, diameter);
-    }
-
-    public double getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 
 }

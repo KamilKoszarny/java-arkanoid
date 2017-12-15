@@ -3,6 +3,7 @@ import highscores.HighscoreManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -87,11 +88,8 @@ public class Game extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             racquet.directionSet(direction);
-            if (direction == "pause")
-                if (!pause)
-                    pause = true;
-                else if (pause)
-                    pause = false;
+            if (Objects.equals(direction, "pause"))
+                pause = !pause;
         }
     }
 
@@ -144,7 +142,7 @@ public class Game extends JPanel {
         frame.setSize(800, 600);
         frame.setResizable(false);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         HighscoreManager highscoreManager = new HighscoreManager();
         String name;
@@ -192,7 +190,7 @@ public class Game extends JPanel {
 
                 if (game.gameOver) {
                     name = JOptionPane.showInputDialog(game, "Your score is: " + score + " Please state your name: ",
-                            "Game Over", JOptionPane.OK_OPTION);
+                            "Game Over", JOptionPane.INFORMATION_MESSAGE);
                     highscoreManager.addScore(name, score);
                     again = JOptionPane.showConfirmDialog(game, "Play again?");
                     i = MAX_ROUNDS;
@@ -201,7 +199,7 @@ public class Game extends JPanel {
                 if (i + 1 == MAX_ROUNDS){
                     JOptionPane.showMessageDialog(frame, "Congratulations, you have finished the game!");
                     name = JOptionPane.showInputDialog(game, "Your score is: " + score + " Please state your name: ",
-                            "Game Over", JOptionPane.OK_OPTION);
+                            "Game Over", JOptionPane.INFORMATION_MESSAGE);
                     highscoreManager.addScore(name, score);
                     again = JOptionPane.showConfirmDialog(game, "Play again?");
                 }
@@ -211,7 +209,7 @@ public class Game extends JPanel {
         System.exit(ABORT);
     }
 
-    public void addBall(){
+    void addBall(){
         lives++;
         if (ball1exists) {
             ball2exists = true;
@@ -232,7 +230,7 @@ public class Game extends JPanel {
 
     }
 
-    public void lifeLost(int number) {
+    void lifeLost(int number) {
         if (number == 2) {
             lives--;
             ball2exists = false;
@@ -257,47 +255,35 @@ public class Game extends JPanel {
 
 ////get/set////////////
 
-    public int getScore() {
+    int getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    void setScore(int score) {
         this.score = score;
     }
 
-    public int getLives() {
+    private int getLives() {
         return lives;
     }
 
-    public int getRoundFinished() {
+    int getRoundFinished() {
         return roundFinished;
     }
 
-    public boolean isLifeLoosen() {
-        return lifeLoosen;
-    }
-
-    public void setLifeLoosen(boolean lifeLoosen) {
-        this.lifeLoosen = lifeLoosen;
-    }
-
-    public boolean isNewBallSend() {
+    boolean isNewBallSend() {
         return newBallSend;
     }
 
-    public void setNewBallSend(boolean newBallSend) {
+    void setNewBallSend(boolean newBallSend) {
         this.newBallSend = newBallSend;
     }
 
-    public boolean isBall1exists() {
+    boolean isBall1exists() {
         return ball1exists;
     }
 
-    public boolean isBall2exists() {
+    boolean isBall2exists() {
         return ball2exists;
-    }
-
-    public void setPause(boolean pause) {
-        this.pause = pause;
     }
 }

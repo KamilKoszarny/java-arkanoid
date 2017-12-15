@@ -1,13 +1,13 @@
 import java.awt.*;
 import java.util.Random;
 
-public class Block {
+class Block {
     private static final int HEIGHT = 50;
     private static final int SPAN = 2;
     private int bonusesNumber = 1;
     private int toughtsNumber = 1;
 
-    public int blocksNumber = 1000;
+    int blocksNumber = 1000;
     private int blocksInRow;
     private int blockWidth;
     private final int x[] = new int [blocksNumber];
@@ -20,7 +20,7 @@ public class Block {
     private Game game;
     private Bonus[] bonus = new Bonus[blocksNumber];
 
-    public Block(Game game, int blocksNumber, int bonusesNumber, int toughtsNumber) {
+    Block(Game game, int blocksNumber, int bonusesNumber, int toughtsNumber) {
         this.game = game;
         this.blocksNumber = blocksNumber;
         this.bonusesNumber = bonusesNumber;
@@ -29,7 +29,7 @@ public class Block {
         blockWidth = 800/blocksInRow;
     }
 
-    public void init(){
+    void init(){
         x[0] = 0;
         for (int i = 0; i < blocksNumber; i++)
             exists[i] = true;
@@ -52,8 +52,6 @@ public class Block {
         for (int i = 0; i < toughtsNumber; i++)
             tought[r.nextInt(blocksNumber)] = true;
 
-
-        int j = 0;
         for (int i = 0; i < blocksNumber; i++) {
             if (hasBonus[i]) {
                 bonus[i] = new Bonus(game);
@@ -62,7 +60,7 @@ public class Block {
     }
 
 
-    public void paint(Graphics2D g) {
+    void paint(Graphics2D g) {
         for (int i = 0; i < blocksNumber; i++) {
             x[i] = i% blocksInRow * blockWidth;
             y[i] = Math.abs(i/ blocksInRow)*HEIGHT;
@@ -84,21 +82,21 @@ public class Block {
         }
     }
 
-    public void move() {
+    void move() {
         for (int i = 0; i < blocksNumber; i++) {
             if (!exists[i] && hasBonus[i])
                 bonus[i].move();
         }
     }
 
-    public Rectangle getBounds(int i) {
+    Rectangle getBounds(int i) {
         if (exists[i]) {
             return new Rectangle(x[i], y[i], blockWidth, HEIGHT);
         }
         return new Rectangle(0,0,0,0);
     }
 
-    public void destroy(int i){
+    void destroy(int i){
         game.setScore(game.getScore() + 1);
         if (!tought[i]) {
             exists[i] = false;
@@ -107,18 +105,18 @@ public class Block {
             tought[i] = false;
     }
 
-    public boolean getExists() {
+    boolean getExists() {
         for (int i = 0; i < blocksNumber; i++)
             if (exists[i])
                 return true;
         return false;
     }
 
-    public void setTought(int i) {
+    void setTought(int i) {
         this.tought[i] = true;
     }
 
-    public int getBlocksInRow() {
+    int getBlocksInRow() {
         return blocksInRow;
     }
 }
