@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
-class Block {
+class Blocks {
     private static final int HEIGHT = 50;
     private static final int SPAN = 2;
     private int bonusesNumber = 1;
@@ -20,7 +20,7 @@ class Block {
     private Game game;
     private Bonus[] bonus = new Bonus[blocksNumber];
 
-    Block(Game game, int blocksNumber, int bonusesNumber, int toughtsNumber) {
+    Blocks(Game game, int blocksNumber, int bonusesNumber, int toughtsNumber) {
         this.game = game;
         this.blocksNumber = blocksNumber;
         this.bonusesNumber = bonusesNumber;

@@ -10,7 +10,8 @@ class Ball {
 
     private Game game;
     private Racquet racquet;
-//    private Block block;
+//    private Blocks blocks;
+
     private int number;
     private int thru = 0;
     private int weak = 0;
@@ -28,7 +29,7 @@ class Ball {
     void move() {
 //        boolean changeDirection = true;
 
-        //frame collisions
+        //FRAME collisions
         if (x + xa < 0)
             xa = -xa;
         else if (x + xa > game.getWidth() - diameter)
@@ -52,40 +53,40 @@ class Ball {
             game.speed += 0.01;
         }
 
-        //block collisions
-        else for (int i = 0; i < game.block.blocksNumber; i++)
+        //blocks collisions
+        else for (int i = 0; i < game.blocks.blocksNumber; i++)
             if (blockCollision(i)){
                 //up
                 if (thru == 0) {
-                    if (y + diameter - Math.abs(ya) - 1 <= game.block.getBounds(i).y)
+                    if (y + diameter - Math.abs(ya) - 1 <= game.blocks.getBounds(i).y)
                         ya = -Math.abs(ya);
                     //down
-                    else if (y + Math.abs(ya) + 1 >= game.block.getBounds(i).y + game.block.getBounds(i).height)
+                    else if (y + Math.abs(ya) + 1 >= game.blocks.getBounds(i).y + game.blocks.getBounds(i).height)
                         ya = Math.abs(ya);
                     //left
-                    else if (x + diameter - Math.abs(xa) - 1 <= game.block.getBounds(i).x)
+                    else if (x + diameter - Math.abs(xa) - 1 <= game.blocks.getBounds(i).x)
                         xa = -Math.abs(xa);
                     //right
-                    else if (x + Math.abs(xa) + 1 >= game.block.getBounds(i).x + game.block.getBounds(i).width)
+                    else if (x + Math.abs(xa) + 1 >= game.blocks.getBounds(i).x + game.blocks.getBounds(i).width)
                         xa = Math.abs(xa);
                 }
 
                 if (weak == 0 && creator == 0)
-                    game.block.destroy(i);
+                    game.blocks.destroy(i);
 
                 if (creator != 0)
-                    game.block.setTought(i);
+                    game.blocks.setTought(i);
 
                 if (explosive != 0){
-                    game.block.destroy(i);
-                    if (i%game.block.getBlocksInRow() != 0)
-                        game.block.destroy(i - 1);
-                    if (i >= game.block.getBlocksInRow())
-                        game.block.destroy(i - game.block.getBlocksInRow());
-                    if (i%game.block.getBlocksInRow() != game.block.getBlocksInRow() - 1)
-                        game.block.destroy(i + 1);
-                    if (i < game.block.getBlocksInRow() * 4)
-                        game.block.destroy(i + game.block.getBlocksInRow());
+                    game.blocks.destroy(i);
+                    if (i%game.blocks.getBlocksInRow() != 0)
+                        game.blocks.destroy(i - 1);
+                    if (i >= game.blocks.getBlocksInRow())
+                        game.blocks.destroy(i - game.blocks.getBlocksInRow());
+                    if (i%game.blocks.getBlocksInRow() != game.blocks.getBlocksInRow() - 1)
+                        game.blocks.destroy(i + 1);
+                    if (i < game.blocks.getBlocksInRow() * 4)
+                        game.blocks.destroy(i + game.blocks.getBlocksInRow());
                 }
             }
 //            else
@@ -113,7 +114,7 @@ class Ball {
     }
 
     private boolean blockCollision(int i) {
-        return game.block.getBounds(i).intersects(getBounds());
+        return game.blocks.getBounds(i).intersects(getBounds());
     }
 
     void paint(Graphics2D g) {

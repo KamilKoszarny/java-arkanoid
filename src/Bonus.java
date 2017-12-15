@@ -183,7 +183,7 @@ private Game game;
                 tmpDiameter = game.ball.getDiameter();
             }
             if (bonusType == NEW_BALL && !game.isNewBallSend()) {
-                game.setNewBallSend(true);
+                game.setNewBallSend();
                 game.addBall();
             }
             if (bonusType == CREATOR) {
