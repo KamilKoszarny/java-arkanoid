@@ -8,7 +8,7 @@ public class HighscoreManager {
     private ArrayList<Score> scores;
 
     // The name of the file where the highscores will be saved
-    private static final String HIGHSCORE_FILE = "D:\\Informatyka\\Projekty\\ArkanoidJava\\Arkanoid2\\scores.dat";
+    private static final String HIGHSCORE_FILE = "E:\\Projekty\\Java\\Arkanoid\\scores.dat";
 
     //Initialising an in and outputStream for working with the file
     private ObjectOutputStream outputStream = null;

@@ -21,9 +21,9 @@ class Racquet {
 
     void directionSet(String direction){
         if (Objects.equals(direction, "left"))
-            xa = -gamePanel.speed - 3;
+            xa = -gamePanel.speed - 4;
         if (Objects.equals(direction, "right"))
-            xa = gamePanel.speed + 3;
+            xa = gamePanel.speed + 4;
         if (Objects.equals(direction, "stop"))
             xa = 0;
     }

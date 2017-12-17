@@ -36,7 +36,8 @@ public class App {
                 GamePanel gamePanel = new GamePanel(i + 1, score, highscore, lives);
                 gamePanel.blocks.init();
                 FRAME.add(gamePanel);
-                FRAME.add(menuPanel);
+                if (i == 0)
+                    FRAME.add(menuPanel);
                 FRAME.validate();
 
 //main thread////////////////////////////////////////////////////////////////////////////
@@ -62,6 +63,7 @@ public class App {
                         System.out.println("gamePanel");
                         if (!gamePanel.isPause()) {
                             gamePanel.move();
+                            System.out.println("gameMove");
                         }
                         gamePanel.repaint();
                     }
@@ -72,16 +74,7 @@ public class App {
                     i--;
                     lives--;
                     score = gamePanel.getScore();
-                    gamePanel.blocks.init();
-                    FRAME.add(gamePanel);
-                    FRAME.setVisible(true);
-                }
-
-//next round if round is finished////////////////////////////////////////////////////////////////////////////
-                if (gamePanel.getRoundFinished() == i + 1) {
-                    score = gamePanel.getScore();
-                    score += gamePanel.getRoundFinished() * 10;
-                    lives = gamePanel.getLives();
+                    openGame = true;
                 }
 
 //gamePanel over////////////////////////////////////////////////////////////////////////////
@@ -91,6 +84,15 @@ public class App {
                     highscoreManager.addScore(name, score);
                     again = JOptionPane.showConfirmDialog(gamePanel, "Play again?");
                     i = MAX_ROUNDS;
+                    FRAME.add(menuPanel);
+                    FRAME.validate();
+                }
+
+//next round if round is finished////////////////////////////////////////////////////////////////////////////
+                if (gamePanel.getRoundFinished() == i + 1) {
+                    score = gamePanel.getScore();
+                    score += gamePanel.getRoundFinished() * 10;
+                    lives = gamePanel.getLives();
                 }
 
 //gamePanel finished////////////////////////////////////////////////////////////////////////////

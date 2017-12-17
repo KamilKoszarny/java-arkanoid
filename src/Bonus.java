@@ -65,7 +65,7 @@ private GamePanel gamePanel;
         FontMetrics fontMetrics = g.getFontMetrics();
 
 //falling
-        if (exists) {
+        if (exists && (!TYPES[bonusTypeNr].equals("NEW_BALL") || !gamePanel.isNewBallSend())) {
             bonusPaint(COLORS[bonusTypeNr], LETTERS[bonusTypeNr], g);
         }
 

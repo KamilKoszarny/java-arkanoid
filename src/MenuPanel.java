@@ -71,12 +71,10 @@ class MenuPanel extends JPanel{
                     case 3: //high scores
                         System.out.println(choosenOption);
                         App.openHighScores(true);
-                        App.openMenu(false);
                         break;
                     case 4: //help
                         System.out.println(choosenOption);
                         App.openHelp(true);
-                        App.openMenu(false);
                         break;
                     case 5: //exit
                         System.out.println(choosenOption);
@@ -85,6 +83,7 @@ class MenuPanel extends JPanel{
                             System.exit(1);
                         break;
                 }
+                App.openMenu(false);
                 isOpen = false;
             }
 //            if (keyPressed.equals("escape")){

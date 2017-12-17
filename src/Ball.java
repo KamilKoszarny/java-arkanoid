@@ -50,7 +50,7 @@ class Ball {
             xa = Math.sin(Math.toRadians(angle))* gamePanel.speed*Math.sqrt(2);
             ya = -Math.cos(Math.toRadians(angle))* gamePanel.speed*Math.sqrt(2);
 
-            gamePanel.speed += 0.01;
+            gamePanel.speed += 0.02;
         }
 
         //blocks collisions

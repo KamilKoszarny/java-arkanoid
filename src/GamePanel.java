@@ -15,8 +15,8 @@ public class GamePanel extends JPanel {
     private boolean gameOver = false;
     private int lives;
     private boolean lifeLoosen = false;
-    private boolean ball2exists = false;
     private boolean ball1exists = true;
+    private boolean ball2exists = false;
     private boolean newBallSend = false;
     private boolean pause = true;
     private boolean firstPause = true;
@@ -34,7 +34,7 @@ public class GamePanel extends JPanel {
         this.roundFinished = nr - 1;
         this.backgroundColor = Color.getHSBColor((float)(0.3+(nr - 1)*0.06), 0.25f, 0.9f);
         this.blocksColor = Color.getHSBColor((float)(0.3+(nr - 1)*0.06), 0.6f, 0.6f);
-        this.speed = (double)(nr - 1)*.5 + 2.5;
+        this.speed = (double)(nr - 1)*.35 + 2.5;
 
         this.racquet = new Racquet(this);
         this.ball = new Ball(this, racquet, this.speed, 1);
@@ -76,22 +76,22 @@ public class GamePanel extends JPanel {
 
     private class MoveAction extends AbstractAction {
 
-        String keyPressed;
+        String direction;
 
-        MoveAction(String keyPressed){
-            this.keyPressed = keyPressed;
+        MoveAction(String direction){
+            this.direction = direction;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (Objects.equals(keyPressed, "pause")) {
+            if (Objects.equals(direction, "pause")) {
                 pause = !pause;
                 firstPause = false;
             }
-            else if (Objects.equals(keyPressed, "menuPanel")) {
+            else if (Objects.equals(direction, "menuPanel")) {
                 App.openMenu(true);
             } else
-                racquet.directionSet(keyPressed);
+                racquet.directionSet(direction);
         }
     }
 
@@ -167,7 +167,6 @@ public class GamePanel extends JPanel {
             lives--;
             ball2exists = false;
             if (!ball1exists) {
-                // lives ++;
                 lifeLoosen = true;
             }
         }
@@ -175,7 +174,6 @@ public class GamePanel extends JPanel {
             lives--;
             ball1exists = false;
             if (!ball2exists) {
-                //  lives ++;
                 lifeLoosen = true;
             }
         }
@@ -213,6 +211,10 @@ public class GamePanel extends JPanel {
 
     boolean isBall1exists() {
         return ball1exists;
+    }
+
+    public void setBall1exists(boolean ball1exists) {
+        this.ball1exists = ball1exists;
     }
 
     boolean isBall2exists() {
