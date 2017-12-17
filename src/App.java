@@ -9,6 +9,8 @@ public class App {
     private static MenuPanel menuPanel = new MenuPanel();
     private static boolean openGame = false;
     static HelpPanel helpPanel = new HelpPanel();
+    static HighScoresPanel highScoresPanel = new HighScoresPanel();
+    static String[] highscores = new String[10];
 //main/////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) throws InterruptedException {
 
@@ -24,7 +26,8 @@ public class App {
 //all runs settings////////////////////////////////////////////////////////////////////
         while (again == JOptionPane.YES_OPTION) {
             again = JOptionPane.NO_OPTION;
-            String highscore = highscoreManager.getHighscoreString();
+            String highscore = highscoreManager.getHighscore();
+            highscores = highscoreManager.getHighscoresTable(10);
             int score = 0;
             int lives = 3;
 
@@ -42,6 +45,10 @@ public class App {
                     if(helpPanel.isOpen()) {
                         System.out.println("helpPanel");
                         helpPanel.repaint();
+                    } else
+                    if(highScoresPanel.isOpen()) {
+                        System.out.println("hsPanel");
+                        highScoresPanel.repaint();
                     } else
                     if(menuPanel.isOpen()) {
                         System.out.println("menuPanel");
@@ -128,6 +135,15 @@ public class App {
         else
             FRAME.add(menuPanel);
         helpPanel.setOpen(open);
+        FRAME.validate();
+    }
+
+    static void openHighScores(boolean open){
+        if (open)
+            FRAME.add(highScoresPanel);
+        else
+            FRAME.add(menuPanel);
+        highScoresPanel.setOpen(open);
         FRAME.validate();
     }
 

@@ -7,28 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b78de29e-62d4-40b2-8581-006e8f7e9d41" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HelpPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MenuPanel.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Game$MoveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Game.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Menu$MoveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Menu.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/HighScoresPanel$MoveAction.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/HighScoresPanel.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HighScoresPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/App.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Ball.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Ball.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Blocks.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Blocks.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Bonus.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Bonus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Racquet.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Racquet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Test.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/MenuPanel$MoveAction.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/MenuPanel$MoveAction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/MenuPanel.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/MenuPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/highscores/HighscoreManager.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/highscores/HighscoreManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.java" afterPath="$PROJECT_DIR$/src/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Ball.java" afterPath="$PROJECT_DIR$/src/Ball.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Blocks.java" afterPath="$PROJECT_DIR$/src/Blocks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bonus.java" afterPath="$PROJECT_DIR$/src/Bonus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Racquet.java" afterPath="$PROJECT_DIR$/src/Racquet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/GamePanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MenuPanel.java" afterPath="$PROJECT_DIR$/src/MenuPanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/highscores/HighscoreManager.java" afterPath="$PROJECT_DIR$/src/highscores/HighscoreManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,47 +29,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Bonus.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Bonus.java">
+      <file leaf-file-name="HighscoreManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/highscores/HighscoreManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1173">
-              <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#move#0;class#Bonus#0" expanded="false" />
-                <element signature="method#bonusPaint#0;class#Bonus#0" expanded="false" />
-                <element signature="method#ballPaint#0;class#Bonus#0" expanded="false" />
-                <marker date="1513540612712" expanded="true" signature="3651:6496" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Blocks.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Blocks.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="45" lean-forward="false" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#GamePanel#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#move#0;class#GamePanel#0" expanded="false" />
-                <element signature="class#MoveAction#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#addBall#0;class#GamePanel#0" expanded="false" />
-                <element signature="method#lifeLost#0;class#GamePanel#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="234">
+              <caret line="87" column="71" lean-forward="false" selection-start-line="87" selection-start-column="71" selection-end-line="87" selection-end-column="71" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,12 +42,12 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="119" column="36" lean-forward="true" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
+            <state relative-caret-position="-153">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5377#5378#0" expanded="true" />
-                <element signature="e#5408#5409#0" expanded="true" />
+                <element signature="e#5961#5962#0" expanded="true" />
+                <element signature="e#5992#5993#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,8 +56,8 @@
       <file leaf-file-name="MenuPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MenuPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="76" column="44" lean-forward="false" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+            <state relative-caret-position="319">
+              <caret line="87" column="31" lean-forward="true" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,8 +68,8 @@
       <file leaf-file-name="HelpPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HelpPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+            <state relative-caret-position="68">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#541#542#0" expanded="true" />
@@ -126,12 +80,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <file leaf-file-name="HighScoresPanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/HighScoresPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="278">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1345#1346#0" expanded="true" />
+                <element signature="e#1374#1375#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,6 +120,8 @@
       <find>roun</find>
       <find>bonus</find>
       <find>diameter</find>
+      <find>highsco</find>
+      <find>highscor</find>
     </findStrings>
     <replaceStrings>
       <replace>double</replace>
@@ -187,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/Blocks/Bonus.java" />
         <option value="$PROJECT_DIR$/src/Blocks/Block.java" />
         <option value="$PROJECT_DIR$/src/Block.java" />
-        <option value="$PROJECT_DIR$/src/highscores/HighscoreManager.java" />
         <option value="$PROJECT_DIR$/src/Racquet.java" />
         <option value="$PROJECT_DIR$/src/Ball.java" />
         <option value="$PROJECT_DIR$/src/Blocks.java" />
@@ -196,9 +155,11 @@
         <option value="$PROJECT_DIR$/src/Menu.java" />
         <option value="$PROJECT_DIR$/src/GamePanel.java" />
         <option value="$PROJECT_DIR$/src/HelpPanel.java" />
-        <option value="$PROJECT_DIR$/src/App.java" />
-        <option value="$PROJECT_DIR$/src/MenuPanel.java" />
         <option value="$PROJECT_DIR$/src/Bonus.java" />
+        <option value="$PROJECT_DIR$/src/MenuPanel.java" />
+        <option value="$PROJECT_DIR$/src/App.java" />
+        <option value="$PROJECT_DIR$/src/highscores/HighscoreManager.java" />
+        <option value="$PROJECT_DIR$/src/HighScoresPanel.java" />
       </list>
     </option>
   </component>
@@ -236,6 +197,12 @@
               <item name="Arkanoid" type="b2602c69:ProjectViewProjectNode" />
               <item name="Arkanoid" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Arkanoid" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Arkanoid" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="highscores" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -504,21 +471,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2652">
-          <caret line="156" column="32" lean-forward="true" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GamePanel#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#move#0;class#GamePanel#0" expanded="false" />
-            <element signature="class#MoveAction#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#addBall#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#lifeLost#0;class#GamePanel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Blocks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -915,13 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/highscores/HighscoreManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Informatyka/Java/jre/lib/rt.jar!/sun/awt/SunToolkit.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -979,25 +924,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/Bonus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="56" />
+        <state relative-caret-position="-1683">
+          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#GamePanel#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#move#0;class#GamePanel#0" expanded="false" />
-            <element signature="class#MoveAction#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#addBall#0;class#GamePanel#0" expanded="false" />
-            <element signature="method#lifeLost#0;class#GamePanel#0" expanded="false" />
+            <element signature="method#move#0;class#Bonus#0" expanded="false" />
+            <element signature="method#bonusPaint#0;class#Bonus#0" expanded="false" />
+            <element signature="method#ballPaint#0;class#Bonus#0" expanded="false" />
+            <marker date="1513540612712" expanded="true" signature="3651:6496" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1012,10 +948,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GamePanel#0;class#GamePanel#0" expanded="false" />
+            <element signature="method#move#0;class#GamePanel#0" expanded="false" />
+            <element signature="class#MoveAction#0;class#GamePanel#0" expanded="false" />
+            <element signature="method#addBall#0;class#GamePanel#0" expanded="false" />
+            <element signature="method#lifeLost#0;class#GamePanel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MenuPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="87" column="31" lean-forward="true" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5961#5962#0" expanded="true" />
+            <element signature="e#5992#5993#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HelpPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#541#542#0" expanded="true" />
@@ -1025,38 +1006,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="119" column="36" lean-forward="true" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5377#5378#0" expanded="true" />
-            <element signature="e#5408#5409#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MenuPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/highscores/HighscoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
-          <caret line="76" column="44" lean-forward="false" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="87" column="71" lean-forward="false" selection-start-line="87" selection-start-column="71" selection-end-line="87" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bonus.java">
+    <entry file="file://$PROJECT_DIR$/src/HighScoresPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1173">
-          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        <state relative-caret-position="278">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#move#0;class#Bonus#0" expanded="false" />
-            <element signature="method#bonusPaint#0;class#Bonus#0" expanded="false" />
-            <element signature="method#ballPaint#0;class#Bonus#0" expanded="false" />
-            <marker date="1513540612712" expanded="true" signature="3651:6496" ph="..." />
+            <element signature="e#1345#1346#0" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
           </folding>
         </state>
       </provider>
