@@ -8,22 +8,22 @@ class Racquet {
     private double width = 120;
     private double x = 340;
     private double xa = 0;
-    private Game game;
+    private GamePanel gamePanel;
 
-    Racquet(Game game) {
-        this.game = game;
+    Racquet(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
     }
 
     void move() {
-        if (x + xa > 0 && x + xa < game.getWidth() - width)
+        if (x + xa > 0 && x + xa < gamePanel.getWidth() - width)
             x += xa;
     }
 
     void directionSet(String direction){
         if (Objects.equals(direction, "left"))
-            xa = -game.speed - 3;
+            xa = -gamePanel.speed - 3;
         if (Objects.equals(direction, "right"))
-            xa = game.speed + 3;
+            xa = gamePanel.speed + 3;
         if (Objects.equals(direction, "stop"))
             xa = 0;
     }

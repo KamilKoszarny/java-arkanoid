@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 import java.util.Objects;
 import javax.swing.*;
 
-@SuppressWarnings("serial")
-public class Game extends JPanel {
+
+public class GamePanel extends JPanel {
 
     double speed;
     private int score;
@@ -21,14 +21,13 @@ public class Game extends JPanel {
     private boolean pause = true;
     private boolean firstPause = true;
 
-    Menu menu;
     Racquet racquet;
     Ball ball;
     Ball ball2;
     Blocks blocks;
 
 
-    public Game(int nr, int score, String highscore, int lives) {
+    public GamePanel(int nr, int score, String highscore, int lives) {
         this.score = score;
         this.highscore = highscore;
         this.lives = lives;
@@ -37,7 +36,6 @@ public class Game extends JPanel {
         this.blocksColor = Color.getHSBColor((float)(0.3+(nr - 1)*0.06), 0.6f, 0.6f);
         this.speed = (double)(nr - 1)*.5 + 2.5;
 
-        this.menu = new Menu();
         this.racquet = new Racquet(this);
         this.ball = new Ball(this, racquet, this.speed, 1);
         this.ball2 = new Ball(this, racquet, this.speed, 2);
@@ -52,15 +50,15 @@ public class Game extends JPanel {
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put
                 (KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0, true), "stop");
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put
-                (KeyStroke.getKeyStroke("P"), "pause");
+                (KeyStroke.getKeyStroke(KeyEvent.VK_P, 0, false), "pause");
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put
-                (KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "menu");
+                (KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false), "menuPanel");
 
         this.getActionMap().put("move left", new MoveAction("left"));
         this.getActionMap().put("move right", new MoveAction("right"));
         this.getActionMap().put("stop", new MoveAction("stop"));
         this.getActionMap().put("pause", new MoveAction("pause"));
-        this.getActionMap().put("menu", new MoveAction("menu"));
+        this.getActionMap().put("menuPanel", new MoveAction("menuPanel"));
     }
 
     void move() {
@@ -78,22 +76,22 @@ public class Game extends JPanel {
 
     private class MoveAction extends AbstractAction {
 
-        String direction;
+        String keyPressed;
 
-        MoveAction(String direction){
-            this.direction = direction;
+        MoveAction(String keyPressed){
+            this.keyPressed = keyPressed;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (Objects.equals(direction, "pause")) {
+            if (Objects.equals(keyPressed, "pause")) {
                 pause = !pause;
                 firstPause = false;
             }
-            else if (Objects.equals(direction, "menu"))
-                menu.setOpen();
-            else
-                racquet.directionSet(direction);
+            else if (Objects.equals(keyPressed, "menuPanel")) {
+                App.openMenu(true);
+            } else
+                racquet.directionSet(keyPressed);
         }
     }
 
@@ -101,49 +99,42 @@ public class Game extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        //menu
-        if (menu.isOpen())
-            menu.paint(g2d);
+        //ball, racquet
+        g2d.setColor(Color.getHSBColor(0f, 0f, 0.3f));
+        if (ball1exists)
+            ball.paint(g2d);
+        if (ball2exists)
+            ball2.paint(g2d);
+        g2d.setColor(Color.BLACK);
+        racquet.paint(g2d);
 
-        else {
-            App.FRAME.setLayout(new BorderLayout());
-            //ball, racquet
-            g2d.setColor(Color.getHSBColor(0f, 0f, 0.3f));
-            if (ball1exists)
-                ball.paint(g2d);
-            if (ball2exists)
-                ball2.paint(g2d);
-            g2d.setColor(Color.BLACK);
-            racquet.paint(g2d);
+        //round
+        this.setBackground(backgroundColor);
+        g2d.setColor(blocksColor);
+        blocks.paint(g2d);
 
-            //round
-            this.setBackground(backgroundColor);
-            g2d.setColor(blocksColor);
-            blocks.paint(g2d);
-
-            //strings
-            g2d.setColor(Color.GRAY);
-            g2d.setFont(new Font("Verdana", Font.BOLD, 20));
-            FontMetrics fontMetrics = g2d.getFontMetrics();
-            g2d.drawString(String.valueOf("Score: " + score), 20, 550);
-            g2d.drawString(String.valueOf("Round: " + (roundFinished + 1)), 20 + fontMetrics.stringWidth
-                    ("Score: " + score) + 20, 550);
-            g2d.drawString(String.valueOf("Lifes: " + (lives)), 20 + fontMetrics.stringWidth
-                    ("Score: " + score + "Round: " + (roundFinished + 1)) + 40, 550);
-            g2d.drawString("High Score: " + highscore, 800 - fontMetrics.stringWidth
-                    ("High Score: " + highscore) - 20, 550);
+        //strings
+        g2d.setColor(Color.GRAY);
+        g2d.setFont(new Font("Verdana", Font.BOLD, 20));
+        FontMetrics fontMetrics = g2d.getFontMetrics();
+        g2d.drawString(String.valueOf("Score: " + score), 20, 550);
+        g2d.drawString(String.valueOf("Round: " + (roundFinished + 1)), 20 + fontMetrics.stringWidth
+                ("Score: " + score) + 20, 550);
+        g2d.drawString(String.valueOf("Lifes: " + (lives)), 20 + fontMetrics.stringWidth
+                ("Score: " + score + "Round: " + (roundFinished + 1)) + 40, 550);
+        g2d.drawString("High Score: " + highscore, 800 - fontMetrics.stringWidth
+                ("High Score: " + highscore) - 20, 550);
 
             //pause
-            if (pause) {
-                g2d.setFont(new Font(g2d.getFont().getName(), g2d.getFont().getStyle(), g2d.getFont().getSize() + 20));
-                if (firstPause)
-                    g2d.drawString("Press P to start", App.FRAME.getWidth() / 2 - fontMetrics.stringWidth("Press P to start"), 300);
-                else
-                    g2d.drawString("PAUSE", 325, 300);
-            }
+        if (pause) {
+            System.out.println("pause");
+            g2d.setFont(new Font(g2d.getFont().getName(), g2d.getFont().getStyle(), g2d.getFont().getSize() + 20));
+            if (firstPause)
+                g2d.drawString("Press P to start", App.FRAME.getWidth() / 2 - fontMetrics.stringWidth("Press P to start"), 300);
+            else
+                g2d.drawString("PAUSE", 325, 300);
         }
     }
 
@@ -244,7 +235,11 @@ public class Game extends JPanel {
         return lifeLoosen;
     }
 
-    public void setFirstPause(boolean firstPause) {
-        this.firstPause = firstPause;
+    public Color getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }

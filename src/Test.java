@@ -10,7 +10,8 @@ public class Test {
         menuNames[1] = "SAVE GAME";
         menuNames[2] = "LOAD GAME";
         menuNames[3] = "HIGH SCORES";
-        menuNames[4] = "EXIT";
+        menuNames[4] = "HELP";
+        menuNames[5] = "EXIT";
     }
 
     public static void main(String[] args) {

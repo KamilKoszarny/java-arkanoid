@@ -17,11 +17,11 @@ class Blocks {
     private boolean tought[] = new boolean[blocksNumber];
 //    private int[] fallenDistance = new int[blocksNumber];
 
-    private Game game;
+    private GamePanel gamePanel;
     private Bonus[] bonus = new Bonus[blocksNumber];
 
-    Blocks(Game game, int blocksNumber, int bonusesNumber, int toughtsNumber) {
-        this.game = game;
+    Blocks(GamePanel gamePanel, int blocksNumber, int bonusesNumber, int toughtsNumber) {
+        this.gamePanel = gamePanel;
         this.blocksNumber = blocksNumber;
         this.bonusesNumber = bonusesNumber;
         this.toughtsNumber = toughtsNumber;
@@ -54,7 +54,7 @@ class Blocks {
 
         for (int i = 0; i < blocksNumber; i++) {
             if (hasBonus[i]) {
-                bonus[i] = new Bonus(game);
+                bonus[i] = new Bonus(gamePanel);
             }
         }
     }
@@ -97,7 +97,7 @@ class Blocks {
     }
 
     void destroy(int i){
-        game.setScore(game.getScore() + 1);
+        gamePanel.setScore(gamePanel.getScore() + 1);
         if (!tought[i]) {
             exists[i] = false;
         }

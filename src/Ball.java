@@ -8,7 +8,7 @@ class Ball {
     private double xa = 3;
     private double ya = -3;
 
-    private Game game;
+    private GamePanel gamePanel;
     private Racquet racquet;
 //    private Blocks blocks;
 
@@ -18,8 +18,8 @@ class Ball {
     private int creator = 0;
     private int explosive = 0;
 
-    Ball(Game game, Racquet racquet, double speed, int number) {
-        this.game = game;
+    Ball(GamePanel gamePanel, Racquet racquet, double speed, int number) {
+        this.gamePanel = gamePanel;
         this.racquet = racquet;
         xa = speed/2;
         ya = -speed*Math.sqrt(3)/2;
@@ -32,61 +32,61 @@ class Ball {
         //FRAME collisions
         if (x + xa < 0)
             xa = -xa;
-        else if (x + xa > game.getWidth() - diameter)
+        else if (x + xa > gamePanel.getWidth() - diameter)
             xa = -xa;
         else if (y + ya < 0)
             ya = -ya;
-        else if (y + ya > game.getHeight() - diameter)
-            game.lifeLost(number);
+        else if (y + ya > gamePanel.getHeight() - diameter)
+            gamePanel.lifeLost(number);
 
         //racquet collisions
         else if (racquetCollision()){
-            y = game.racquet.getTopY() - diameter;
+            y = gamePanel.racquet.getTopY() - diameter;
             double angle = ballAngle() + racquetAngle();
             if (angle > 70)
                 angle = 70;
             if (angle < -70)
                 angle = -70;
-            xa = Math.sin(Math.toRadians(angle))*game.speed*Math.sqrt(2);
-            ya = -Math.cos(Math.toRadians(angle))*game.speed*Math.sqrt(2);
+            xa = Math.sin(Math.toRadians(angle))* gamePanel.speed*Math.sqrt(2);
+            ya = -Math.cos(Math.toRadians(angle))* gamePanel.speed*Math.sqrt(2);
 
-            game.speed += 0.01;
+            gamePanel.speed += 0.01;
         }
 
         //blocks collisions
-        else for (int i = 0; i < game.blocks.blocksNumber; i++)
+        else for (int i = 0; i < gamePanel.blocks.blocksNumber; i++)
             if (blockCollision(i)){
                 //up
                 if (thru == 0) {
-                    if (y + diameter - Math.abs(ya) - 1 <= game.blocks.getBounds(i).y)
+                    if (y + diameter - Math.abs(ya) - 1 <= gamePanel.blocks.getBounds(i).y)
                         ya = -Math.abs(ya);
                     //down
-                    else if (y + Math.abs(ya) + 1 >= game.blocks.getBounds(i).y + game.blocks.getBounds(i).height)
+                    else if (y + Math.abs(ya) + 1 >= gamePanel.blocks.getBounds(i).y + gamePanel.blocks.getBounds(i).height)
                         ya = Math.abs(ya);
                     //left
-                    else if (x + diameter - Math.abs(xa) - 1 <= game.blocks.getBounds(i).x)
+                    else if (x + diameter - Math.abs(xa) - 1 <= gamePanel.blocks.getBounds(i).x)
                         xa = -Math.abs(xa);
                     //right
-                    else if (x + Math.abs(xa) + 1 >= game.blocks.getBounds(i).x + game.blocks.getBounds(i).width)
+                    else if (x + Math.abs(xa) + 1 >= gamePanel.blocks.getBounds(i).x + gamePanel.blocks.getBounds(i).width)
                         xa = Math.abs(xa);
                 }
 
                 if (weak == 0 && creator == 0)
-                    game.blocks.destroy(i);
+                    gamePanel.blocks.destroy(i);
 
                 if (creator != 0)
-                    game.blocks.setTought(i);
+                    gamePanel.blocks.setTought(i);
 
                 if (explosive != 0){
-                    game.blocks.destroy(i);
-                    if (i%game.blocks.getBlocksInRow() != 0)
-                        game.blocks.destroy(i - 1);
-                    if (i >= game.blocks.getBlocksInRow())
-                        game.blocks.destroy(i - game.blocks.getBlocksInRow());
-                    if (i%game.blocks.getBlocksInRow() != game.blocks.getBlocksInRow() - 1)
-                        game.blocks.destroy(i + 1);
-                    if (i < game.blocks.getBlocksInRow() * 4)
-                        game.blocks.destroy(i + game.blocks.getBlocksInRow());
+                    gamePanel.blocks.destroy(i);
+                    if (i% gamePanel.blocks.getBlocksInRow() != 0)
+                        gamePanel.blocks.destroy(i - 1);
+                    if (i >= gamePanel.blocks.getBlocksInRow())
+                        gamePanel.blocks.destroy(i - gamePanel.blocks.getBlocksInRow());
+                    if (i% gamePanel.blocks.getBlocksInRow() != gamePanel.blocks.getBlocksInRow() - 1)
+                        gamePanel.blocks.destroy(i + 1);
+                    if (i < gamePanel.blocks.getBlocksInRow() * 4)
+                        gamePanel.blocks.destroy(i + gamePanel.blocks.getBlocksInRow());
                 }
             }
 //            else
@@ -114,7 +114,7 @@ class Ball {
     }
 
     private boolean blockCollision(int i) {
-        return game.blocks.getBounds(i).intersects(getBounds());
+        return gamePanel.blocks.getBounds(i).intersects(getBounds());
     }
 
     void paint(Graphics2D g) {
