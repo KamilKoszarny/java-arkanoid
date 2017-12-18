@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
-class Block {
+class Blocks {
     private static final int HEIGHT = 50;
     private static final int SPAN = 2;
     private int bonusesNumber = 1;
@@ -17,11 +17,11 @@ class Block {
     private boolean tought[] = new boolean[blocksNumber];
 //    private int[] fallenDistance = new int[blocksNumber];
 
-    private Game game;
+    private GamePanel gamePanel;
     private Bonus[] bonus = new Bonus[blocksNumber];
 
-    Block(Game game, int blocksNumber, int bonusesNumber, int toughtsNumber) {
-        this.game = game;
+    Blocks(GamePanel gamePanel, int blocksNumber, int bonusesNumber, int toughtsNumber) {
+        this.gamePanel = gamePanel;
         this.blocksNumber = blocksNumber;
         this.bonusesNumber = bonusesNumber;
         this.toughtsNumber = toughtsNumber;
@@ -54,7 +54,7 @@ class Block {
 
         for (int i = 0; i < blocksNumber; i++) {
             if (hasBonus[i]) {
-                bonus[i] = new Bonus(game);
+                bonus[i] = new Bonus(gamePanel);
             }
         }
     }
@@ -97,7 +97,7 @@ class Block {
     }
 
     void destroy(int i){
-        game.setScore(game.getScore() + 1);
+        gamePanel.setScore(gamePanel.getScore() + 1);
         if (!tought[i]) {
             exists[i] = false;
         }

@@ -1,3 +1,2 @@
 # java-arkanoid
-Java Swing Arkanoid game
-Game made in IntelliJ IDEA
+Java Swing Arkanoid game made in IntelliJ IDEA

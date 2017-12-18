@@ -8,7 +8,7 @@ public class HighscoreManager {
     private ArrayList<Score> scores;
 
     // The name of the file where the highscores will be saved
-    private static final String HIGHSCORE_FILE = "D:\\Informatyka\\Projekty\\ArkanoidJava\\Arkanoid2\\scores.dat";
+    private static final String HIGHSCORE_FILE = "E:\\Projekty\\Java\\Arkanoid\\scores.dat";
 
     //Initialising an in and outputStream for working with the file
     private ObjectOutputStream outputStream = null;
@@ -72,24 +72,33 @@ public class HighscoreManager {
         }
     }
 
-    public String getHighscoreString() {
+    public String[] getHighscoresTable(int count) {
         StringBuilder highscoreString = new StringBuilder();
-        int max = 1;
+        String[] highscoreStrings = new String[count];
 
         ArrayList<Score> scores;
         scores = getScores();
 
         int i = 0;
         int x = scores.size();
-        if (x > max) {
-            x = max;
+        if (x > count) {
+            x = count;
         }
         while (i < x) {
-            highscoreString.append(scores.get(i).getNaam()).append("   ").append(scores.get(i).getScore());
+            highscoreString.append(scores.get(i).getNaam()).append(" \t  ").append(scores.get(i).getScore());
+            highscoreStrings[i] = highscoreString.toString();
             i++;
+            highscoreString = new StringBuilder();
         }
-        return highscoreString.toString();
+
+        return highscoreStrings;
     }
+
+    public String getHighscore() {
+        String highscoreString = getHighscoresTable(1)[0];
+        return highscoreString;
+    }
+
 
 ////////////////////////////////////////////////////////////////////////
     private void sort() {
