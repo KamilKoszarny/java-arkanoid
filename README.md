@@ -1,3 +1,2 @@
 # java-arkanoid
-Java Swing Arkanoid gamePanel
-GamePanel made in IntelliJ IDEA
+Java Swing Arkanoid game made in IntelliJ IDEA
