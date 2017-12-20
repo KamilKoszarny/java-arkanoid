@@ -8,9 +8,11 @@ public class App {
     static final JFrame FRAME = new JFrame("Arkanoid Kamilowy");
     private static MenuPanel menuPanel = new MenuPanel();
     private static boolean openGame = false;
-    static HelpPanel helpPanel = new HelpPanel();
-    static HighScoresPanel highScoresPanel = new HighScoresPanel();
+    private static HelpPanel helpPanel = new HelpPanel();
+    private static HighScoresPanel highScoresPanel = new HighScoresPanel();
     static String[] highscores = new String[10];
+    static boolean saving = false;
+    static boolean loading = false;
 //main/////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) throws InterruptedException {
 
@@ -51,8 +53,18 @@ public class App {
                         System.out.println("hsPanel");
                         highScoresPanel.repaint();
                     } else
+                    if (loading) {
+                        gamePanel = GamesLoadSaver.load();
+                        gamePanel.setPause(true);
+                        loading = false;
+                        openGame = true;
+                    }
+                    else if (saving) {
+                        GamesLoadSaver.save(gamePanel);
+                        saving = false;
+                    }
                     if(menuPanel.isOpen()) {
-                        System.out.println("menuPanel");
+//                        System.out.println("menuPanel");
                         menuPanel.repaint();
                     } else {
                         if (openGame) {
@@ -60,7 +72,7 @@ public class App {
                             openGame = false;
                             FRAME.validate();
                         }
-                        System.out.println("gamePanel");
+//                        System.out.println("gamePanel");
                         if (!gamePanel.isPause()) {
                             gamePanel.move();
                             System.out.println("gameMove");

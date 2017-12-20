@@ -1,61 +1,61 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.ArrayList;
 
-public class GamesLoadSaver {
-    // An arraylist of the type "GamePanel" we will use to work with the gamePanels inside the class
-    private ArrayList<GamePanel> gamePanels;
 
-    // The name of the folder where the games will be saved
-    private static final String GAMES_FOLDER = "E:\\Projekty\\Java\\Arkanoid\\games.dat";
+public class GamesLoadSaver extends JFrame{
 
-    //Initialising an in and outputStream for working with the file
-    private ObjectOutputStream outputStream = null;
-
-    public GamesLoadSaver() {
-        //initialising the gamePanels-arraylist
-        gamePanels = new ArrayList<GamePanel>();
+    public static void save(GamePanel game){
+        GamesLoadSaveFrame glsFrame = new GamesLoadSaveFrame(true);
+        String fileName = glsFrame.getDirectory();
+        serialize(game, fileName);
     }
 
-    private void saveGame(GamePanel game) {
-
-        try {
-            outputStream = new ObjectOutputStream(new FileOutputStream(GAMES_FOLDER));
-            outputStream.writeObject(gamePanels);
-        } catch (FileNotFoundException e) {
-            System.out.println("[Update] FNF Error: " + e.getMessage() + ",the program will try and make a new file");
-        } catch (IOException e) {
-            System.out.println("[Update] IO Error: " + e.getMessage());
-        } finally {
+    public static GamePanel load(){
+        GamesLoadSaveFrame glsFrame = new GamesLoadSaveFrame(false);
+        String fileName = null;
+        while (fileName == null) {
+            fileName = glsFrame.getDirectory();
             try {
-                if (outputStream != null) {
-                    outputStream.flush();
-                    outputStream.close();
-                }
-            } catch (IOException e) {
-                System.out.println("[Update] Error: " + e.getMessage());
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+        }
+        Object obj = deserialize(fileName);
+        GamePanel game = (GamePanel) obj;
+        return game;
+    }
+
+    private static void serialize(GamePanel game, String fileName){
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(fileName);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(game);
+            oos.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
-    private void loadGame(GamePanel game) {
+    private static Object deserialize(String fileName){
+        FileInputStream fis = null;
+        Object obj = null;
         try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(GAMES_FOLDER));
-            gamePanels = (ArrayList<GamePanel>) inputStream.readObject();
-        } catch (FileNotFoundException e) {
-            System.out.println("[Laad] FNF Error: " + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("[Laad] IO Error: " + e.getMessage());
+            fis = new FileInputStream(fileName);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            obj = ois.readObject();
+            ois.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.out.println("[Laad] CNF Error: " + e.getMessage());
-        } finally {
-            try {
-                if (outputStream != null) {
-                    outputStream.flush();
-                    outputStream.close();
-                }
-            } catch (IOException e) {
-                System.out.println("[Laad] IO Error: " + e.getMessage());
-            }
+            e.printStackTrace();
         }
+        return obj;
     }
 }

@@ -1,11 +1,14 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.swing.*;
 
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     double speed;
     private int score;
@@ -237,11 +240,7 @@ public class GamePanel extends JPanel {
         return lifeLoosen;
     }
 
-    public Color getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public void setBackgroundColor(Color backgroundColor) {
-        this.backgroundColor = backgroundColor;
+    public void setPause(boolean pause) {
+        this.pause = pause;
     }
 }

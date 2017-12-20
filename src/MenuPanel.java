@@ -54,27 +54,39 @@ class MenuPanel extends JPanel{
                 choosenOption--;
                 repaint();
             }
+
             choosenOption = (choosenOption + menuNames.length) % menuNames.length;
             if (keyPressed.equals("enter")) {
                 switch (choosenOption) {
                     case 0: //start/resume
                         System.out.println(choosenOption);
                         App.openGame(true);
+                        App.openMenu(false);
+                        isOpen = false;
                         menuNames[0] = "RESUME GAME";
                         break;
                     case 1: //save
                         System.out.println(choosenOption);
+                        App.saving = true;
                         break;
                     case 2: //load
                         System.out.println(choosenOption);
+                        App.loading = true;
+                        App.openMenu(false);
+                        isOpen = false;
+                        menuNames[0] = "RESUME GAME";
                         break;
                     case 3: //high scores
                         System.out.println(choosenOption);
                         App.openHighScores(true);
+                        App.openMenu(false);
+                        isOpen = false;
                         break;
                     case 4: //help
                         System.out.println(choosenOption);
                         App.openHelp(true);
+                        App.openMenu(false);
+                        isOpen = false;
                         break;
                     case 5: //exit
                         System.out.println(choosenOption);
@@ -83,8 +95,6 @@ class MenuPanel extends JPanel{
                             System.exit(1);
                         break;
                 }
-                App.openMenu(false);
-                isOpen = false;
             }
 //            if (keyPressed.equals("escape")){
 //                App.openMenu(false);
@@ -97,7 +107,7 @@ class MenuPanel extends JPanel{
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
-
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.GRAY);
         g2d.setFont(new Font("Verdana", Font.BOLD, 50));
         FontMetrics fontMetrics = g2d.getFontMetrics();

@@ -1,8 +1,12 @@
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.Objects;
 
-class Racquet {
+class Racquet implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
     static final int Y = 500;
     static final int HEIGHT = 20;
     private double width = 120;

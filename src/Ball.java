@@ -1,8 +1,11 @@
 import java.awt.*;
+import java.io.Serializable;
 
-class Ball {
+class Ball implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private double diameter = 24;
-
     private double x = 384;
     private double y = 400;
     private double xa = 3;

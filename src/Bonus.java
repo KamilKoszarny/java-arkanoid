@@ -1,49 +1,52 @@
 import javax.swing.text.html.HTML;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Random;
 
-public class Bonus{
+public class Bonus implements Serializable{
 
-private static final int DURATION = 1500;
-private static final Color[] COLORS = {Color.GREEN, Color.RED, Color.BLUE, Color.ORANGE, Color.BLACK, Color.WHITE,
-        Color.MAGENTA, Color.CYAN, Color.LIGHT_GRAY, Color.PINK, Color.YELLOW};
-private static final String[] TYPES = {"LONG", "SHORT", "SLOW", "FAST", "THRU", "WEAK",
-        "SMALL", "BIG", "NEW_BALL", "CREATOR", "EXPLOSIVE"};
-private static final Character[] LETTERS = {'L','S','S','F','T','W',
-        'S','B','N','C','X'};
-private static final String[] DESCRIPTIONS = {
-        "LONG - makes your bar longer for some time. Position of green letter 'L' on bar shows duration.",
-                "This bonus can be increased with another LONG or neutralized with SHORT.",
-        "SHORT - makes your bar shorted for some time. Position of red letter 'S' on bar shows duration.",
-                "This bonus can be increased with another SHORT or neutralized with LONG.",
-        "SLOW - slows ball for some time. Size of blue dot on ball shows duration.",
-                "This bonus can be increased with another SLOW or neutralized with FAST.",
-        "FAST - speeds up ball for some time. Size of orange dot on ball shows duration.",
-                "This bonus can be increased with another FAST or neutralized with SLOW.",
-        "THROUGH - gives ball ability to go break through the blocks destroying them much faster",
-                "Size of black dot on ball shows duration, which is shorter with every round",
-        "WEAK - ball cannot destroy the blocks and is just bouncing off them.",
-                "Size of white dot on ball shows duration.",
-        "SMALL - ball will be smaller with each second, till it reaches 1/3 of its original size,",
-                "then it will slowly go back to normal size.",
-        "BIG - ball will be bigger with each second, till it reaches 2X its original size,",
-                "then it will slowly go back to normal size.",
-        "NEW BALL - gives you another ball and life. If you loose one of balls you loose this extra life,",
-                "but if you manage to keep both balls till the end of round you keep extra life",
-        "CREATOR - ball will darken blocks instead of destroying them. Dark blocks must be hit twice to destroy,",
-                "but they provide two times more points. Size of pink dot on ball shows duration.",
-        "EXPLOSIVE - ball can destroy dark blocks with one hit. Adjoining blocks will be destroyed as well",
-                "Size of yellow dot on ball shows duration."};
+    private static final long serialVersionUID = 1L;
 
-private int bonusTypeNr = -1;
-private double duration = 0;
-private int x, y, diameter;
-private String bonusType;
-private int fallenDistance  = 0;
-private boolean exists, caught;
+    private static final int DURATION = 1500;
+    private static final Color[] COLORS = {Color.GREEN, Color.RED, Color.BLUE, Color.ORANGE, Color.BLACK, Color.WHITE,
+            Color.MAGENTA, Color.CYAN, Color.LIGHT_GRAY, Color.PINK, Color.YELLOW};
+    private static final String[] TYPES = {"LONG", "SHORT", "SLOW", "FAST", "THRU", "WEAK",
+            "SMALL", "BIG", "NEW_BALL", "CREATOR", "EXPLOSIVE"};
+    private static final Character[] LETTERS = {'L','S','S','F','T','W',
+            'S','B','N','C','X'};
+    private static final String[] DESCRIPTIONS = {
+            "LONG - makes your bar longer for some time. Position of green letter 'L' on bar shows duration.",
+                    "This bonus can be increased with another LONG or neutralized with SHORT.",
+            "SHORT - makes your bar shorted for some time. Position of red letter 'S' on bar shows duration.",
+                    "This bonus can be increased with another SHORT or neutralized with LONG.",
+            "SLOW - slows ball for some time. Size of blue dot on ball shows duration.",
+                    "This bonus can be increased with another SLOW or neutralized with FAST.",
+            "FAST - speeds up ball for some time. Size of orange dot on ball shows duration.",
+                    "This bonus can be increased with another FAST or neutralized with SLOW.",
+            "THROUGH - gives ball ability to go break through the blocks destroying them much faster",
+                    "Size of black dot on ball shows duration, which is shorter with every round",
+            "WEAK - ball cannot destroy the blocks and is just bouncing off them.",
+                    "Size of white dot on ball shows duration.",
+            "SMALL - ball will be smaller with each second, till it reaches 1/3 of its original size,",
+                    "then it will slowly go back to normal size.",
+            "BIG - ball will be bigger with each second, till it reaches 2X its original size,",
+                    "then it will slowly go back to normal size.",
+            "NEW BALL - gives you another ball and life. If you loose one of balls you loose this extra life,",
+                    "but if you manage to keep both balls till the end of round you keep extra life",
+            "CREATOR - ball will darken blocks instead of destroying them. Dark blocks must be hit twice to destroy,",
+                    "but they provide two times more points. Size of pink dot on ball shows duration.",
+            "EXPLOSIVE - ball can destroy dark blocks with one hit. Adjoining blocks will be destroyed as well",
+                    "Size of yellow dot on ball shows duration."};
 
-private GamePanel gamePanel;
+    private int bonusTypeNr = -1;
+    private double duration = 0;
+    private int x, y, diameter;
+    private String bonusType;
+    private int fallenDistance  = 0;
+    private boolean exists, caught;
+
+    private GamePanel gamePanel;
 
     Bonus(GamePanel gamePanel) {
         this.gamePanel = gamePanel;

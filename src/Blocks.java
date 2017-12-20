@@ -1,7 +1,11 @@
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Random;
 
-class Blocks {
+class Blocks implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
     private static final int HEIGHT = 50;
     private static final int SPAN = 2;
     private int bonusesNumber = 1;
