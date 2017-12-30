@@ -1,4 +1,3 @@
-import javax.swing.text.html.HTML;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -164,12 +163,12 @@ public class Bonus implements Serializable{
                 gamePanel.speed *= 1.3;
             }
             if (Objects.equals(bonusType, "THRU")) {
-                gamePanel.ball.changeThru(true);
-                gamePanel.ball2.changeThru(true);
+                gamePanel.ball.addThru(true);
+                gamePanel.ball2.addThru(true);
             }
             if (Objects.equals(bonusType, "WEAK")) {
-                gamePanel.ball.changeWeak(true);
-                gamePanel.ball2.changeWeak(true);
+                gamePanel.ball.addWeak(true);
+                gamePanel.ball2.addWeak(true);
             }
             if (Objects.equals(bonusType, "SMALL")) {
                 tmpDiameter = gamePanel.ball.getDiameter();
@@ -182,12 +181,12 @@ public class Bonus implements Serializable{
                 gamePanel.addBall();
             }
             if (Objects.equals(bonusType, "CREATOR")) {
-                gamePanel.ball.changeCreator(true);
-                gamePanel.ball2.changeCreator(true);
+                gamePanel.ball.addCreator(true);
+                gamePanel.ball2.addCreator(true);
             }
             if (Objects.equals(bonusType, "EXPLOSIVE")) {
-                gamePanel.ball.changeExplosive(true);
-                gamePanel.ball2.changeExplosive(true);
+                gamePanel.ball.addExplosive(true);
+                gamePanel.ball2.addExplosive(true);
             }
 
             caught = true;
@@ -219,12 +218,12 @@ public class Bonus implements Serializable{
                     gamePanel.speed /= 1.3;
                 }
                 if (Objects.equals(bonusType, "THRU")) {
-                    gamePanel.ball.changeThru(false);
-                    gamePanel.ball2.changeThru(false);
+                    gamePanel.ball.addThru(false);
+                    gamePanel.ball2.addThru(false);
                 }
                 if (Objects.equals(bonusType, "WEAK")) {
-                    gamePanel.ball.changeWeak(false);
-                    gamePanel.ball2.changeWeak(false);
+                    gamePanel.ball.addWeak(false);
+                    gamePanel.ball2.addWeak(false);
                 }
                 if (Objects.equals(bonusType, "SMALL")) {
                     gamePanel.ball.setDiameter(tmpDiameter);
@@ -235,12 +234,12 @@ public class Bonus implements Serializable{
                     gamePanel.ball2.setDiameter(tmpDiameter);
                 }
                 if (Objects.equals(bonusType, "CREATOR")) {
-                    gamePanel.ball.changeCreator(false);
-                    gamePanel.ball2.changeCreator(false);
+                    gamePanel.ball.addCreator(false);
+                    gamePanel.ball2.addCreator(false);
                 }
                 if (Objects.equals(bonusType, "EXPLOSIVE")) {
-                    gamePanel.ball.changeExplosive(false);
-                    gamePanel.ball2.changeExplosive(false);
+                    gamePanel.ball.addExplosive(false);
+                    gamePanel.ball2.addExplosive(false);
                 }
                 caught = false;
             }

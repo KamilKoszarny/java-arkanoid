@@ -105,7 +105,6 @@ public class GamePanel extends JPanel implements Serializable {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         //ball, racquet
-        g2d.setColor(Color.getHSBColor(0f, 0f, 0.3f));
         if (ball1exists)
             ball.paint(g2d);
         if (ball2exists)

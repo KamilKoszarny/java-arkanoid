@@ -75,7 +75,7 @@ public class App {
 //                        System.out.println("gamePanel");
                         if (!gamePanel.isPause()) {
                             gamePanel.move();
-                            System.out.println("gameMove");
+//                            System.out.println("gameMove");
                         }
                         gamePanel.repaint();
                     }
