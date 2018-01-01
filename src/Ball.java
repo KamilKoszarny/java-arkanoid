@@ -11,6 +11,8 @@ class Ball implements Serializable {
     private double y = 400;
     private double xa;
     private double ya;
+    private double speed;
+    private double angle;
 
     private GamePanel gamePanel;
     private Racquet racquet;
@@ -22,7 +24,7 @@ class Ball implements Serializable {
     private int creator = 0;
     private int explosive = 0;
     private int rotAngle = 0;
-    private int rotation = 15; //-15:15
+    private int rotation = 1; //-1000:1000
 
     Ball(GamePanel gamePanel, Racquet racquet, double speed, int number) {
         this.gamePanel = gamePanel;
@@ -33,12 +35,9 @@ class Ball implements Serializable {
     }
 
     void move() {
-
+        speed = Math.sqrt(xa*xa + ya*ya);
 //rotation influence
         rotate();
-        rotAngle -= rotation;
-        if (rotAngle < 0)
-            rotAngle += 360;
 
 //FRAME collisions
         if(frameCollide()){}
@@ -121,32 +120,77 @@ class Ball implements Serializable {
 
     private void racquetCollide(){
         y = gamePanel.racquet.getTopY() - diameter;
-        double angle = ballAngle() + racquetAngle();
-        if (angle > 70)
-            angle = 70;
-        if (angle < -70)
-            angle = -70;
-        xa = Math.sin(Math.toRadians(angle))* gamePanel.speed*Math.sqrt(2);
-        ya = -Math.cos(Math.toRadians(angle))* gamePanel.speed*Math.sqrt(2);
+        double rHitAngle = ballAngle() + racquetAngle();
+        if (rHitAngle > 70)
+            rHitAngle = 70;
+        if (rHitAngle < -70)
+            rHitAngle = -70;
+        xa = Math.sin(Math.toRadians(rHitAngle))* gamePanel.speed*Math.sqrt(2);
+        ya = -Math.cos(Math.toRadians(rHitAngle))* gamePanel.speed*Math.sqrt(2);
         System.out.print(xa + "\t" + ya);
 
         gamePanel.speed += 0.02;
     }
 
     private void blockCollide(int i){
-        //up
+
         if (thru == 0) {
-            if (y + diameter - Math.abs(ya) - 1 <= gamePanel.blocks.getBounds(i).y)
-                ya = -Math.abs(ya);
-                //down
-            else if (y + Math.abs(ya) + 1 >= gamePanel.blocks.getBounds(i).y + gamePanel.blocks.getBounds(i).height)
-                ya = Math.abs(ya);
-                //left
-            else if (x + diameter - Math.abs(xa) - 1 <= gamePanel.blocks.getBounds(i).x)
-                xa = -Math.abs(xa);
-                //right
-            else if (x + Math.abs(xa) + 1 >= gamePanel.blocks.getBounds(i).x + gamePanel.blocks.getBounds(i).width)
-                xa = Math.abs(xa);
+//up
+            if (y + diameter - Math.abs(ya) - 1 <= gamePanel.blocks.getBounds(i).y) {
+                angle = 180 - angle + rotation/50.;
+                rotation -= (int)(xa*100 + rotation/10.);
+    //0-90deg
+                if (xa >=0 && ya < 0) {
+                    xa = Math.sin(Math.toRadians(angle)) * speed;
+                    ya = -Math.cos(Math.toRadians(angle)) * speed;
+    //270-360deg
+                } else /*if (xa < 0 && ya < 0) */{
+                    xa = -Math.cos(Math.toRadians(angle - 270)) * speed;
+                    ya = -Math.sin(Math.toRadians(angle - 270)) * speed;
+                }
+            }
+//down
+            else if (y + Math.abs(ya) + 1 >= gamePanel.blocks.getBounds(i).y + gamePanel.blocks.getBounds(i).height) {
+                angle = 180 - angle + rotation/50.;
+                rotation -= (int)(xa*100 + rotation/10.);
+    //0-90deg
+                if (xa >=0 && ya < 0) {
+                    xa = Math.sin(Math.toRadians(angle)) * speed;
+                    ya = -Math.cos(Math.toRadians(angle)) * speed;
+    //270-360deg
+                } else /*if (xa < 0 && ya < 0) */{
+                    xa = -Math.cos(Math.toRadians(angle - 270)) * speed;
+                    ya = -Math.sin(Math.toRadians(angle - 270)) * speed;
+                }
+            }
+//left
+            else if (x + diameter - Math.abs(xa) - 1 <= gamePanel.blocks.getBounds(i).x) {
+                angle = 180 - angle + rotation/50.;
+                rotation -= (int)(ya*100 + rotation/10.);
+    //90-180deg
+                if (xa >= 0 && ya >= 0) {
+                    xa = Math.cos(Math.toRadians(angle - 90)) * speed;
+                    ya = Math.sin(Math.toRadians(angle - 90)) * speed;
+    //180-270deg
+                } else if (xa < 0 && ya >= 0) {
+                    xa = -Math.sin(Math.toRadians(angle - 180)) * speed;
+                    ya = Math.cos(Math.toRadians(angle - 180)) * speed;
+                }
+            }
+//right
+            else if (x + Math.abs(xa) + 1 >= gamePanel.blocks.getBounds(i).x + gamePanel.blocks.getBounds(i).width) {
+                angle = 180 - angle + rotation/50.;
+                rotation -= (int)(ya*100 + rotation/10.);
+                //90-180deg
+                if (xa >= 0 && ya >= 0) {
+                    xa = Math.cos(Math.toRadians(angle - 90)) * speed;
+                    ya = Math.sin(Math.toRadians(angle - 90)) * speed;
+                    //180-270deg
+                } else if (xa < 0 && ya >= 0) {
+                    xa = -Math.sin(Math.toRadians(angle - 180)) * speed;
+                    ya = Math.cos(Math.toRadians(angle - 180)) * speed;
+                }
+            }
         }
 
         if (weak == 0 && creator == 0)
@@ -169,34 +213,43 @@ class Ball implements Serializable {
     }
 
     private void rotate(){
-        double oldAngle = Math.toDegrees(Math.atan(xa/ya));
+        angle = Math.toDegrees(Math.atan(xa/ya));
         if(ya >= 0)
-            oldAngle = 180 - oldAngle;
+            angle = 180 - angle;
         else if (xa >= 0)
-            oldAngle = - oldAngle;
+            angle = -angle;
         else if (xa < 0)
-            oldAngle = 360 - oldAngle;
-        double speed = Math.sqrt(xa*xa + ya*ya);
+            angle = 360 - angle;
+
         System.out.print("speed: " + new DecimalFormat(".##").format(speed));
-        double newAngle = oldAngle + rotation/100.*speed;
-        System.out.println("\tangle: " + new DecimalFormat(".#").format(newAngle));
+        angle += rotation/5000.*speed;
+        System.out.print("\tangle: " + new DecimalFormat(".#").format(angle));
+        System.out.println("\trot: " + rotation);
 //0-90deg
         if (xa >=0 && ya < 0) {
-            xa = Math.sin(Math.toRadians(newAngle)) * speed;
-            ya = -Math.cos(Math.toRadians(newAngle)) * speed;
+            xa = Math.sin(Math.toRadians(angle)) * speed;
+            ya = -Math.cos(Math.toRadians(angle)) * speed;
 //90-180deg
         } else if (xa >= 0 && ya >= 0) {
-            xa = Math.cos(Math.toRadians(newAngle - 90)) * speed;
-            ya = Math.sin(Math.toRadians(newAngle - 90)) * speed;
+            xa = Math.cos(Math.toRadians(angle - 90)) * speed;
+            ya = Math.sin(Math.toRadians(angle - 90)) * speed;
 //180-270deg
         } else if (xa < 0 && ya >= 0) {
-            xa = -Math.sin(Math.toRadians(newAngle - 180)) * speed;
-            ya = Math.cos(Math.toRadians(newAngle - 180)) * speed;
+            xa = -Math.sin(Math.toRadians(angle - 180)) * speed;
+            ya = Math.cos(Math.toRadians(angle - 180)) * speed;
 //270-360deg
         } else /*if (xa < 0 && ya < 0) */{
-            xa = -Math.cos(Math.toRadians(newAngle - 270)) * speed;
-            ya = -Math.sin(Math.toRadians(newAngle - 270)) * speed;
+            xa = -Math.cos(Math.toRadians(angle - 270)) * speed;
+            ya = -Math.sin(Math.toRadians(angle - 270)) * speed;
         }
+//rotation paint
+        rotAngle -= rotation/50.;
+        rotAngle = rotAngle%360;
+//rotation loose
+        if (rotation > 0)
+            rotation -= 1;
+        if (rotation < 0)
+            rotation += 1;
     }
 
     ///get/set////////////////////////////////////////////////////////////////////////

@@ -7,15 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b78de29e-62d4-40b2-8581-006e8f7e9d41" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/App.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Ball.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Ball.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/Bonus.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/Bonus.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Arkanoid2/GamePanel.class" afterPath="$PROJECT_DIR$/out/production/Arkanoid2/GamePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.java" afterPath="$PROJECT_DIR$/src/App.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Ball.java" afterPath="$PROJECT_DIR$/src/Ball.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bonus.java" afterPath="$PROJECT_DIR$/src/Bonus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GamePanel.java" afterPath="$PROJECT_DIR$/src/GamePanel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,14 +23,13 @@
       <file leaf-file-name="Ball.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="173" column="38" lean-forward="true" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+            <state relative-caret-position="171">
+              <caret line="246" column="8" lean-forward="false" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
               <folding>
                 <element signature="method#racquetCollision#0;class#Ball#0" expanded="false" />
                 <element signature="method#paint#0;class#Ball#0" expanded="false" />
                 <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
                 <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-                <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
                 <element signature="method#addThru#0;class#Ball#0" expanded="false" />
                 <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
                 <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -119,6 +111,7 @@
       <find>GAMEO</find>
       <find>send</find>
       <find>Out</find>
+      <find>angle</find>
     </findStrings>
     <replaceStrings>
       <replace>double</replace>
@@ -164,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="683" />
     <option name="height" value="728" />
   </component>
@@ -186,9 +179,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -211,7 +201,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,7 +427,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -507,7 +500,6 @@
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -546,7 +538,7 @@
             <element signature="imports" expanded="true" />
             <element signature="method#bonusPaint#0;class#Bonus#0" expanded="false" />
             <element signature="method#ballPaint#0;class#Bonus#0" expanded="false" />
-            <marker date="1513805237611" expanded="true" signature="3945:6790" ph="..." />
+            <marker date="1514636236574" expanded="true" signature="3945:6790" ph="..." />
           </folding>
         </state>
       </provider>
@@ -580,7 +572,6 @@
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -619,7 +610,7 @@
             <element signature="imports" expanded="true" />
             <element signature="method#bonusPaint#0;class#Bonus#0" expanded="false" />
             <element signature="method#ballPaint#0;class#Bonus#0" expanded="false" />
-            <marker date="1513805237611" expanded="true" signature="3945:6790" ph="..." />
+            <marker date="1514636236574" expanded="true" signature="3945:6790" ph="..." />
           </folding>
         </state>
       </provider>
@@ -643,7 +634,6 @@
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -706,7 +696,6 @@
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -759,7 +748,6 @@
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -812,7 +800,6 @@
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
@@ -938,7 +925,7 @@
             <element signature="imports" expanded="true" />
             <element signature="method#bonusPaint#0;class#Bonus#0" expanded="false" />
             <element signature="method#ballPaint#0;class#Bonus#0" expanded="false" />
-            <marker date="1513805237611" expanded="true" signature="3945:6790" ph="..." />
+            <marker date="1514636236574" expanded="true" signature="3945:6790" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1028,14 +1015,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Ball.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="173" column="38" lean-forward="true" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+        <state relative-caret-position="171">
+          <caret line="246" column="8" lean-forward="false" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
           <folding>
             <element signature="method#racquetCollision#0;class#Ball#0" expanded="false" />
             <element signature="method#paint#0;class#Ball#0" expanded="false" />
             <element signature="method#frameCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#racquetCollide#0;class#Ball#0" expanded="false" />
-            <element signature="method#blockCollide#0;class#Ball#0" expanded="false" />
             <element signature="method#addThru#0;class#Ball#0" expanded="false" />
             <element signature="method#addWeak#0;class#Ball#0" expanded="false" />
             <element signature="method#addCreator#0;class#Ball#0" expanded="false" />
