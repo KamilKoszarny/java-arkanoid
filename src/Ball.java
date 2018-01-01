@@ -135,58 +135,55 @@ class Ball implements Serializable {
     private void blockCollide(int i){
 
         if (thru == 0) {
+            angle = 180 - angle + rotation/50.;
 //up
             if (y + diameter - Math.abs(ya) - 1 <= gamePanel.blocks.getBounds(i).y) {
-                angle = 180 - angle + rotation/50.;
                 rotation -= (int)(xa*100 + rotation/10.);
     //0-90deg
-                if (xa >=0 && ya < 0) {
+                if (xa >=0) {
                     xa = Math.sin(Math.toRadians(angle)) * speed;
                     ya = -Math.cos(Math.toRadians(angle)) * speed;
     //270-360deg
-                } else /*if (xa < 0 && ya < 0) */{
+                } else /*if (xa < 0) */{
                     xa = -Math.cos(Math.toRadians(angle - 270)) * speed;
                     ya = -Math.sin(Math.toRadians(angle - 270)) * speed;
                 }
             }
 //down
             else if (y + Math.abs(ya) + 1 >= gamePanel.blocks.getBounds(i).y + gamePanel.blocks.getBounds(i).height) {
-                angle = 180 - angle + rotation/50.;
                 rotation -= (int)(xa*100 + rotation/10.);
     //0-90deg
-                if (xa >=0 && ya < 0) {
+                if (xa >=0 ) {
                     xa = Math.sin(Math.toRadians(angle)) * speed;
                     ya = -Math.cos(Math.toRadians(angle)) * speed;
     //270-360deg
-                } else /*if (xa < 0 && ya < 0) */{
+                } else /*if (xa < 0) */{
                     xa = -Math.cos(Math.toRadians(angle - 270)) * speed;
                     ya = -Math.sin(Math.toRadians(angle - 270)) * speed;
                 }
             }
 //left
             else if (x + diameter - Math.abs(xa) - 1 <= gamePanel.blocks.getBounds(i).x) {
-                angle = 180 - angle + rotation/50.;
                 rotation -= (int)(ya*100 + rotation/10.);
     //90-180deg
-                if (xa >= 0 && ya >= 0) {
+                if (ya >= 0) {
                     xa = Math.cos(Math.toRadians(angle - 90)) * speed;
                     ya = Math.sin(Math.toRadians(angle - 90)) * speed;
     //180-270deg
-                } else if (xa < 0 && ya >= 0) {
+                } else /*if (ya < 0)*/ {
                     xa = -Math.sin(Math.toRadians(angle - 180)) * speed;
                     ya = Math.cos(Math.toRadians(angle - 180)) * speed;
                 }
             }
 //right
             else if (x + Math.abs(xa) + 1 >= gamePanel.blocks.getBounds(i).x + gamePanel.blocks.getBounds(i).width) {
-                angle = 180 - angle + rotation/50.;
                 rotation -= (int)(ya*100 + rotation/10.);
                 //90-180deg
-                if (xa >= 0 && ya >= 0) {
+                if (ya >= 0) {
                     xa = Math.cos(Math.toRadians(angle - 90)) * speed;
                     ya = Math.sin(Math.toRadians(angle - 90)) * speed;
                     //180-270deg
-                } else if (xa < 0 && ya >= 0) {
+                } else /*if (ya < 0)*/ {
                     xa = -Math.sin(Math.toRadians(angle - 180)) * speed;
                     ya = Math.cos(Math.toRadians(angle - 180)) * speed;
                 }
